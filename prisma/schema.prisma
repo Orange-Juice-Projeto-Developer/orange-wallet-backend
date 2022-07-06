@@ -7,14 +7,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Transaction {
-  id            String  @id @default(uuid())
-  value         Float
-  payment_type  String 
-  category      String
-  date          DateTime
+  id       String   @id @default(uuid())
+  title    String
+  value    Float
+  type     String
+  category String
+  date     DateTime
 
   @@map("transactions")
 }
-
