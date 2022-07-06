@@ -1,10 +1,9 @@
-import { Request, Response } from "express";
+import { TransactionController } from "../controllers/TransactionController";
 
+const transactionController = new TransactionController();
 const express = require("express");
 const transactionRoutes = express.Router();
 
-transactionRoutes.get("/", (req: Request, res: Response) => {
-  return res.json("Hello World!");
-});
+transactionRoutes.post("/transactions", transactionController.create);
 
 export default transactionRoutes;
