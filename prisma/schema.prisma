@@ -13,7 +13,7 @@ model Transaction {
   value    Float
   type     String
   category String
-  date     DateTime
+  date     DateTime @default(now())
 
   @@map("transactions")
 }
