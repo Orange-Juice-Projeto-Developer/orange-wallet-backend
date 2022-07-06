@@ -98,3 +98,10 @@ Além disso, é necessária a seguinte configuração no settings.json:
 },
 "eslint.validate": ["javascript"]
 ```
+💡 Para o Prisma, é recomendado instalar a extensão oficial chamada “Prisma”, e adicionar no settings.json a seguinte configuração para formatar o texto ao salvar:
+
+```bash
+"[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  }
+```
