@@ -8,8 +8,8 @@ _O projeto está em andamento._
 
 ## ✅ To Do List
 
-- [ ] CRUD receitas
-- [ ] CRUD despesas
+- [x] CRUD receitas
+- [x] CRUD despesas
 
 ## 🚀 Tecnologias utilizadas
 
@@ -33,43 +33,37 @@ git clone git@github.com:Orange-Juice-Projeto-Developer/orange-wallet-backend.gi
 cd orange-wallet-backend
 ```
 
-3. Ir para a branch develop:
-
-```bash
-git checkout develop
-```
-
-4. Abrir no editor (manualmente ou pela linha de código, como no exemplo):
+3. Abrir no editor (manualmente ou pela linha de código, como no exemplo):
 
 ```bash
 code .
 ```
 
-5. Instalar dependências:
+4. Instalar dependências:
 
 ```bash
 npm install
 ```
 
-6. Rodar o servidor:
+5. Rodar o servidor:
 
 ```bash
 npm run dev
 ```
 
-7. Criar arquivo .env com o link para o banco de dados, como no exemplo:
+6. Criar arquivo .env com o link para o banco de dados, como no exemplo:
 
 ```bash
 DATABASE_URL="postgres://nomedobanco:senhadobanco@raja.db.elephantsql.com/nomedobanco"
 ```
 
-8. Criar conexão com o banco de dados
+7. Criar conexão com o banco de dados
 
 ```bash
 npx prisma db push
 ```
 
-9. Abrir interface gráfica para visualização do banco de dados
+8. Abrir interface gráfica para visualização do banco de dados
 
 ```bash
 npx prisma studio
@@ -98,6 +92,7 @@ Além disso, é necessária a seguinte configuração no settings.json:
 },
 "eslint.validate": ["javascript"]
 ```
+
 💡 Para o Prisma, é recomendado instalar a extensão oficial chamada “Prisma”, e adicionar no settings.json a seguinte configuração para formatar o texto ao salvar:
 
 ```bash
