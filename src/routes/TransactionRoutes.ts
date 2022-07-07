@@ -10,5 +10,6 @@ transactionRoutes.get(
   transactionController.listAllTransactions
 );
 transactionRoutes.patch("/transactions/:id", transactionController.update);
+transactionRoutes.delete("/transactions/:id", transactionController.delete);
 
 export default transactionRoutes;

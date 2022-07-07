@@ -1,4 +1,3 @@
-import { prisma } from "@prisma/client";
 import { Request, Response } from "express";
 import { prismaClient } from "../database/PrismaClient";
 import { TransactionService } from "../services/TransactionService";
@@ -31,6 +30,7 @@ class TransactionController {
       return res.status(400).json(error);
     }
   }
+
   async update(req: Request, res: Response) {
     const service = new TransactionService();
     try {
@@ -49,6 +49,22 @@ class TransactionController {
       return res.status(201).json(transaction);
     } catch (error) {
       return res.json({ error });
+    }
+  }
+
+  async delete(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+
+      const transaction = await prismaClient.transaction.delete({
+        where: {
+          id
+        }
+      });
+
+      return res.status(200).json(transaction);
+    } catch (error) {
+      return res.status(404).json(error);
     }
   }
 }
