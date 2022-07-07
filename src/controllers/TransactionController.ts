@@ -1,3 +1,4 @@
+import { prisma } from "@prisma/client";
 import { Request, Response } from "express";
 import { prismaClient } from "../database/PrismaClient";
 import { TransactionService } from "../services/TransactionService";
@@ -15,7 +16,7 @@ class TransactionController {
         category,
         date
       );
-      return res.json(transaction);
+      return res.status(201).json(transaction);
     } catch (error) {
       res.status(400).json(error);
     }
@@ -28,6 +29,26 @@ class TransactionController {
       return res.status(200).json(transactions);
     } catch (error) {
       return res.status(400).json(error);
+    }
+  }
+  async update(req: Request, res: Response) {
+    const service = new TransactionService();
+    try {
+      const { id } = req.params;
+      const { title, value, type, category, date } = req.body;
+
+      let transaction = await prismaClient.transaction.findUnique({
+        where: { id: String(id) }
+      });
+
+      if (!transaction) return res.json({ error: "Cannot find transaction" });
+      transaction = await prismaClient.transaction.update({
+        where: { id: String(id) },
+        data: { title, type, value, category, date }
+      });
+      return res.status(201).json(transaction);
+    } catch (error) {
+      return res.json({ error });
     }
   }
 }
