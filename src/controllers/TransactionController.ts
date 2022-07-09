@@ -3,7 +3,7 @@ import { prismaClient } from "../database/PrismaClient";
 import { TransactionService } from "../services/TransactionService";
 
 class TransactionController {
-  async create(req: Request, res: Response) {
+  async createTransaction(req: Request, res: Response) {
     const service = new TransactionService();
 
     try {
@@ -31,7 +31,7 @@ class TransactionController {
     }
   }
 
-  async update(req: Request, res: Response) {
+  async updateTransaction(req: Request, res: Response) {
     const service = new TransactionService();
     try {
       const { id } = req.params;
@@ -52,7 +52,7 @@ class TransactionController {
     }
   }
 
-  async delete(req: Request, res: Response) {
+  async deleteTransaction(req: Request, res: Response) {
     try {
       const { id } = req.params;
 
