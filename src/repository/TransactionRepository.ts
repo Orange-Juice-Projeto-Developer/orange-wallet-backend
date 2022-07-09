@@ -18,6 +18,12 @@ class TransactionRepository {
     });
     return transaction;
   }
+
+  async findMany() {
+    const transaction = await prismaClient.transaction.findMany({});
+    return transaction;
+  }
+
 }
 
 export { TransactionRepository };

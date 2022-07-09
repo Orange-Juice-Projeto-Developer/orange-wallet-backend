@@ -22,8 +22,9 @@ class TransactionController {
   }
 
   async listAllTransactions(req: Request, res: Response) {
+    const service = new TransactionService();
     try {
-      const transactions = await prismaClient.transaction.findMany();
+      const transactions = await service.list();
 
       return res.status(200).json(transactions);
     } catch (error) {

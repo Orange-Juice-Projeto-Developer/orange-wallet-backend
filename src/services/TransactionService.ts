@@ -11,6 +11,12 @@ class TransactionService {
     const transaction = new TransactionRepository();
     return transaction.create(title, value, type, category, date);
   }
+
+  async list() {
+    const transaction = new TransactionRepository();
+    return transaction.findMany();
+  }
+
 }
 
 export { TransactionService };
