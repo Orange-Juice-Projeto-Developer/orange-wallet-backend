@@ -28,6 +28,11 @@ class TransactionService {
     const transaction = new TransactionRepository();
     return transaction.update(id, title, value, type, category, date);
   }
+
+  async remove(id: string) {
+    const transaction = new TransactionRepository();
+    return transaction.delete(id);
+  }
 }
 
 export { TransactionService };

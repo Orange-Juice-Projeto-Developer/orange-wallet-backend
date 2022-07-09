@@ -54,14 +54,11 @@ class TransactionController {
   }
 
   async deleteTransaction(req: Request, res: Response) {
+    const service = new TransactionService();
     try {
       const { id } = req.params;
 
-      const transaction = await prismaClient.transaction.delete({
-        where: {
-          id
-        }
-      });
+      const transaction = await service.remove(id);
 
       return res.status(200).json(transaction);
     } catch (error) {

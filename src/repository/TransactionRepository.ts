@@ -44,6 +44,13 @@ class TransactionRepository {
     });
     return transaction;
   }
+
+  async delete(id: string) {
+    const transaction = await prismaClient.transaction.delete({
+      where: { id }
+    });
+    return transaction;
+  }
 }
 
 export { TransactionRepository };
