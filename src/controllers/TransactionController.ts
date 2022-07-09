@@ -38,15 +38,15 @@ class TransactionController {
       const { id } = req.params;
       const { title, value, type, category, date } = req.body;
 
-      let transaction = await prismaClient.transaction.findUnique({
-        where: { id: String(id) }
-      });
+      const transaction = await service.updateOne(
+        id,
+        title,
+        value,
+        type,
+        category,
+        date
+      );
 
-      if (!transaction) return res.json({ error: "Cannot find transaction" });
-      transaction = await prismaClient.transaction.update({
-        where: { id: String(id) },
-        data: { title, type, value, category, date }
-      });
       return res.status(201).json(transaction);
     } catch (error) {
       return res.json({ error });

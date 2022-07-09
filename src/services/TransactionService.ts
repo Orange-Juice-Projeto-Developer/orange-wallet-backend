@@ -17,6 +17,17 @@ class TransactionService {
     return transaction.findMany();
   }
 
+  async updateOne(
+    id: string,
+    title: string,
+    value: number,
+    type: string,
+    category: string,
+    date: Date
+  ) {
+    const transaction = new TransactionRepository();
+    return transaction.update(id, title, value, type, category, date);
+  }
 }
 
 export { TransactionService };
