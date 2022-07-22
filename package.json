@@ -4,7 +4,9 @@
   "description": "Projeto dev Back End Tecnologia ( Node )",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/server.ts"
+    "dev": "ts-node-dev src/server.ts",
+    "build": "npx tsc",
+    "start": "node dist/server.js"
   },
   "repository": {
     "type": "git",
