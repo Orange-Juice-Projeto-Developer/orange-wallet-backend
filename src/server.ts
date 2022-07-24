@@ -9,7 +9,7 @@ const port = 8080;
 
 app.use(cors());
 app.use(express.json());
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use("/swagger-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use(routes);
 
 app.listen(process.env.PORT || port, () => {
