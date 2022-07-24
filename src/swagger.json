@@ -1,1 +1,193 @@
-{}
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Orange Wallet",
+    "description": "Documentação do back-end da Orange Wallet ",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/",
+      "description": "Rota de Tests"
+    },
+    {
+      "url": "https://orange-wallet-backend.herokuapp.com",
+      "description": "Rota de Produção"
+    }
+  ],
+  "paths": {
+    "/createTransaction": {
+      "post": {
+        "summary": "Cria uma nova Transacão",
+        "description": "Essa rota é responsavel pelo cadastro de novas transações",
+        "tags": ["Transaction"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Transaction"
+              },
+              "examples": {
+                "transaction": {
+                  "value": {
+                    "title": "Pastel",
+                    "value": 20,
+                    "type": "Despesa",
+                    "category": "Alimentacao"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Transaction"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listTransaction": {
+      "get": {
+        "description": "Lista as transações",
+        "summary": "Essa rota é responsavel por listar todas as transações existentes",
+        "tags": ["Transaction"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "$ref": "#/components/schemas/Transaction"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/editTransaction/{id}": {
+      "patch": {
+        "summary": "Atualiza uma Transacão",
+        "description": "Essa rota é responsavel por atualizar os dados de uma transação existente",
+        "tags": ["Transaction"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da Transação",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Transaction"
+              },
+              "examples": {
+                "transaction": {
+                  "value": {
+                    "title": "Minn-Pastel",
+                    "value": 15,
+                    "type": "Despesa",
+                    "category": "Alimentacao"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Transaction"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deleteTransaction/{id}": {
+      "delete": {
+        "summary": "Deleta uma Transacão",
+        "description": "Essa rota é responsavel por deletar uma transação existente",
+        "tags": ["Transaction"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da Transação",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Transaction"
+                }
+              }
+            },
+            "404": {
+              "description": "Bad Request"
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Transaction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number",
+            "format": "float"
+          },
+          "type": {
+            "type": "string"
+          },
+
+          "category": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}
