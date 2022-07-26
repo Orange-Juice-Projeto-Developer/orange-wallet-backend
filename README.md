@@ -1,15 +1,19 @@
 # 🍊 Orange Wallet
 
-> A fim de colocar os estudos em prática, os desenvolvedores da comunidade <a href="https://digital.fcamara.com.br/orangejuice" target="_blank">Orange Juice</a> estruturaram e desenvolveram este projeto, cujo objetivo é cadastrar receitas, despesas e mostrar o saldo disponível.
-
-_O projeto está em andamento._
-
+> A fim de colocar os estudos em prática, os desenvolvedores da comunidade [Orange Juice](https://digital.fcamara.com.br/orangejuice) estruturaram e desenvolveram este projeto, cujo objetivo é cadastrar receitas, despesas e mostrar o saldo disponível.
 >
+> *O projeto lançou a primeira versão, mas ainda está em andamento.*
+> 
+
+## 🌐 Documentação Swagger
+
+A API está no ar e a especificação [está neste seguinte link](https://orange-wallet-backend.herokuapp.com/swagger-docs/).
 
 ## ✅ To Do List
 
-- [x] CRUD receitas
-- [x] CRUD despesas
+- [x]  CRUD receitas
+- [x]  CRUD despesas
+- [ ]  CRUD usuários
 
 ## 🚀 Tecnologias utilizadas
 
