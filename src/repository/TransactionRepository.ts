@@ -35,12 +35,19 @@ class TransactionRepository {
     return transaction;
   }
 
-  async update(id: string, title: string, value: number, date: Date) {
+  async update(
+    id: string,
+    title: string,
+    value: number,
+    categoryId: number,
+    date: Date
+  ) {
     const transaction = await prismaClient.transaction.update({
       where: { id: String(id) },
       data: {
         title,
         value,
+        categoryId,
         date
       }
     });

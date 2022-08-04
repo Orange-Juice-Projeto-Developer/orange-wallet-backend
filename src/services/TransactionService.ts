@@ -20,10 +20,11 @@ class TransactionService {
     id: string,
     title: string,
     value: number,
+    categoryId: number,
     date: Date
   ) {
     const transaction = new TransactionRepository();
-    return transaction.update(id, title, value, date);
+    return transaction.update(id, title, value, categoryId, date);
   }
 
   async remove(id: string) {

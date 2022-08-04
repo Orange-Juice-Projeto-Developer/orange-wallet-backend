@@ -35,12 +35,13 @@ class TransactionController {
     const service = new TransactionService();
     try {
       const { id } = req.params;
-      const { title, value, date } = req.body;
+      const { title, value, date, categoryId } = req.body;
 
       const transaction = await service.updateOne(
         id,
         title,
         value,
+        categoryId,
         date
       );
 
