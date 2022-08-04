@@ -4,12 +4,11 @@ class TransactionService {
   async execute(
     title: string,
     value: number,
-    type: string,
-    category: string,
+    categoryId: number,
     date: Date
   ) {
     const transaction = new TransactionRepository();
-    return transaction.create(title, value, type, category, date);
+    return transaction.create(title, value, categoryId, date);
   }
 
   async list() {
@@ -21,12 +20,10 @@ class TransactionService {
     id: string,
     title: string,
     value: number,
-    type: string,
-    category: string,
     date: Date
   ) {
     const transaction = new TransactionRepository();
-    return transaction.update(id, title, value, type, category, date);
+    return transaction.update(id, title, value, date);
   }
 
   async remove(id: string) {
