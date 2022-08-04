@@ -20,7 +20,7 @@ model Transaction {
 
 model Category {
   id           Int           @id @default(autoincrement())
-  categoryName String
+  categoryName String        @unique
   categoryType String
   transaction  Transaction[]
 
