@@ -3,16 +3,14 @@ class TransactionRepository {
   async create(
     title: string,
     value: number,
-    type: string,
-    category: string,
+    categoryId: number,
     date: Date
   ) {
     const transaction = await prismaClient.transaction.create({
       data: {
         title,
         value,
-        type,
-        category,
+        categoryId,
         date
       }
     });
@@ -20,25 +18,29 @@ class TransactionRepository {
   }
 
   async findMany() {
-    const transaction = await prismaClient.transaction.findMany({});
+    const transaction = await prismaClient.transaction.findMany({
+      select: {
+        id: true,
+        title: true,
+        value: true,
+        Category: {
+          select: {
+            categoryName: true,
+            categoryType: true
+          }
+        },
+        date: true
+      }
+    });
     return transaction;
   }
 
-  async update(
-    id: string,
-    title: string,
-    value: number,
-    type: string,
-    category: string,
-    date: Date
-  ) {
+  async update(id: string, title: string, value: number, date: Date) {
     const transaction = await prismaClient.transaction.update({
       where: { id: String(id) },
       data: {
         title,
-        type,
         value,
-        category,
         date
       }
     });
