@@ -47,7 +47,7 @@ class TransactionController {
 
       return res.status(201).json(transaction);
     } catch (error) {
-      return res.json({ error });
+      return res.status(404).json(error);
     }
   }
 

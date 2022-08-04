@@ -43,7 +43,7 @@ class CategoryController {
 
       return res.status(201).json(category);
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(404).json(error);
     }
   }
 
