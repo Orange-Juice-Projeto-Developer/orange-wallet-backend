@@ -7,12 +7,11 @@ class TransactionController {
     const service = new TransactionService();
 
     try {
-      const { title, value, type, category, date } = req.body;
+      const { title, value, categoryId, date } = req.body;
       const transaction = await service.execute(
         title,
         value,
-        type,
-        category,
+        categoryId,
         date
       );
       return res.status(201).json(transaction);
@@ -36,14 +35,12 @@ class TransactionController {
     const service = new TransactionService();
     try {
       const { id } = req.params;
-      const { title, value, type, category, date } = req.body;
+      const { title, value, date } = req.body;
 
       const transaction = await service.updateOne(
         id,
         title,
         value,
-        type,
-        category,
         date
       );
 
