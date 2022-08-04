@@ -8,12 +8,21 @@ datasource db {
 }
 
 model Transaction {
-  id       String   @id @default(uuid())
-  title    String
-  value    Float
-  type     String
-  category String
-  date     DateTime 
+  id         String    @id @default(uuid())
+  title      String
+  value      Float
+  date       DateTime
+  Category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
 
   @@map("transactions")
+}
+
+model Category {
+  id           Int           @id @default(autoincrement())
+  categoryName String
+  categoryType String
+  transaction  Transaction[]
+
+  @@map("categories")
 }
