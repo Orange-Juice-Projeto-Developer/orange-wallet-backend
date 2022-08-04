@@ -159,6 +159,148 @@
           }
         }
       }
+    },
+    "/createCategory": {
+      "post": {
+        "summary": "Cria uma nova categoria",
+        "description": "Essa rota é responsável pela criação de novas categorias",
+        "tags": ["Category"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Category"
+              },
+              "examples": {
+                "category": {
+                  "value": {
+                    "categoryName": "Renda de Investimento",
+                    "categoryType": "Receita"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Category"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/listCategories": {
+      "get": {
+        "summary": "Lista as categorias",
+        "description": "Essa rota é responsável por listar todas as categorias existentes",
+        "tags": ["Category"],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "$ref": "#/components/schemas/Category"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/editCategory/{id}": {
+      "patch": {
+        "summary": "Atualiza uma categoria",
+        "description": "Essa rota é responsável por atualizar os dados de uma categoria existente",
+        "tags": ["Category"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da categoria",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Category"
+              },
+              "examples": {
+                "category": {
+                  "value": {
+                    "categoryName": "Renda de Investimento",
+                    "categoryType": "Receita"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Category"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/deleteCategory/{id}": {
+      "delete": {
+        "summary": "Deleta uma categoria",
+        "description": "Essa rota é responsável por deletar uma categoria existente",
+        "tags": ["Category"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da categoria",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Category"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Bad Request"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -186,6 +328,20 @@
           "date": {
             "type": "string",
             "format": "date-time"
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "categoryName": {
+            "type": "string"
+          },
+          "categoryType": {
+            "type": "string"
           }
         }
       }
