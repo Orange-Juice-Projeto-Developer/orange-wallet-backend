@@ -32,8 +32,7 @@
                   "value": {
                     "title": "Pastel",
                     "value": 20,
-                    "type": "Despesa",
-                    "category": "Alimentação",
+                    "categoryId": 10,
                     "date": "2022-07-27T00:20:37.575Z"
                   }
                 }
@@ -104,10 +103,9 @@
               "examples": {
                 "transaction": {
                   "value": {
-                    "title": "Minn-Pastel",
+                    "title": "Mini-Pastel",
                     "value": 15,
-                    "type": "Despesa",
-                    "category": "Alimentação"
+                    "categoryId": 10
                   }
                 }
               }
@@ -125,6 +123,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Bad Request"
           }
         }
       }
@@ -318,12 +319,8 @@
             "type": "number",
             "format": "float"
           },
-          "type": {
-            "type": "string"
-          },
-
-          "category": {
-            "type": "string"
+          "categoryId": {
+            "type": "number"
           },
           "date": {
             "type": "string",
